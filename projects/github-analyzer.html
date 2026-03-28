@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Profile Analyzer — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">CLI Tool</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">GitHub Profile Analyzer</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A terminal CLI tool that analyses any GitHub user's profile — showing
+        language breakdowns with visual bars, top repositories ranked by stars,
+        and recent activity tracking.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://www.npmjs.com/package/gh-profile-peek" target="_blank" rel="noopener" class="link-primary">&nearr; View on npm</a>
+        <a href="https://github.com/gypsy00/GitHub-profile-analyzer" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.35s">
+      <h3 class="project-section-title">Try It Yourself</h3>
+      <p>Open your terminal and run:</p>
+      <div class="arch-block" style="margin-top: 16px; margin-bottom: 16px">
+<span class="hl"># Run instantly with npx (no install needed)</span>
+npx gh-profile-peek gypsy00
+
+<span class="hl"># Or install globally</span>
+npm install -g gh-profile-peek
+gh-peek gypsy00
+
+<span class="hl"># Analyse any GitHub user</span>
+gh-peek torvalds
+gh-peek gaearon
+
+<span class="hl"># Options</span>
+gh-peek username --top 10          <span class="hl"># show top 10 repos</span>
+gh-peek username --token ghp_...   <span class="hl"># use a GitHub token for higher rate limits</span></div>
+      <p>
+        Requires <strong style="color: var(--text-bright)">Node.js 18+</strong>.
+        No GitHub token needed for basic use — but adding one with
+        <code style="color: var(--accent)">--token</code> increases the rate limit
+        from 60 to 5,000 requests per hour.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        GitHub profiles show basic stats, but getting a quick, formatted overview
+        of someone's coding activity — what languages they actually use, which repos
+        matter most, and what they've been working on recently — requires clicking
+        through multiple pages.
+      </p>
+      <p>
+        I wanted a single command that pulls all of this together in the terminal,
+        formatted with colour-coded bars and clean typography. Something you could
+        run before a code review, a hiring decision, or just out of curiosity.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        The CLI takes a GitHub username as input, makes multiple API calls to fetch
+        profile data, repository details, language breakdowns, and recent events.
+        It then aggregates the data — combining language byte counts across up to
+        30 repos — and renders everything as formatted terminal output with coloured
+        percentage bars and structured sections.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">$ npx gh-profile-peek username</span>
+  &darr;
+<span class="hl">Commander</span> (parse args: username, --top, --token)
+  &darr;
+<span class="hl">API Layer</span> (src/api.js)
+  ├── GET /users/{username}
+  ├── GET /users/{username}/repos (up to 30)
+  ├── GET /repos/{owner}/{repo}/languages (per repo)
+  └── GET /users/{username}/events (last 90 days)
+  &darr;
+<span class="hl">Analyze Layer</span> (src/analyze.js)
+  ├── Aggregate language bytes across all repos
+  ├── Rank repos by star count
+  └── Group events by type (Push, PR, Issue, etc.)
+  &darr;
+<span class="hl">Display Layer</span> (src/display.js)
+  ├── Profile card (name, bio, location, followers)
+  ├── Language bars (coloured percentages)
+  ├── Top repos table (stars, forks, language)
+  └── Activity summary (event counts by type)</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Language Breakdown</strong>
+            <span>Aggregates byte counts from up to 30 repos and displays them as coloured percentage bars in the terminal.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Top Repositories</strong>
+            <span>Ranked by star count with fork counts and primary language shown. Configurable number of repos via --top flag.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Activity Tracking</strong>
+            <span>Groups the last 90 days of public events by type — PushEvent, PullRequestEvent, IssueCommentEvent, etc.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Profile Overview</strong>
+            <span>Displays name, bio, location, company, follower/following counts, public repos, and account age.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Token Support</strong>
+            <span>Accepts a GitHub Personal Access Token via --token for higher API rate limits (5,000 vs 60 requests/hour).</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>npm Publishable</strong>
+            <span>Configured with a bin entry point — installable globally or runnable directly with npx.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>Node.js 18+</strong>
+          <span>Runtime with native fetch API — no HTTP library needed for GitHub API calls.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Commander</strong>
+          <span>CLI argument parsing — handles positional args (username) and flags (--top, --token).</span>
+        </div>
+        <div class="tech-item">
+          <strong>Chalk v5</strong>
+          <span>Terminal colour library (ESM). Renders coloured bars, highlighted text, and structured output.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Ora</strong>
+          <span>Loading spinners for API calls — gives users visual feedback while data is being fetched.</span>
+        </div>
+        <div class="tech-item">
+          <strong>GitHub REST API v3</strong>
+          <span>Data source for profiles, repos, languages, and events. Handles pagination and rate limiting.</span>
+        </div>
+        <div class="tech-item">
+          <strong>ESM (Pure)</strong>
+          <span>Full ES Module setup with "type": "module" in package.json. No CommonJS, no build step.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        This was my first time building a distributable CLI tool. I learned how npm's
+        bin field works, how shebang lines let Node scripts run as executables, and
+        how to structure a CLI with clean separation between argument parsing, API
+        calls, data processing, and terminal rendering.
+      </p>
+      <p>
+        Working with the GitHub API taught me about rate limiting and how to handle
+        it gracefully — the tool works without authentication but warns users about
+        the lower limit and accepts a token for power users.
+      </p>
+      <p>
+        The language aggregation was interesting because GitHub's language API returns
+        byte counts per repo, not percentages. I had to sum bytes across all repos
+        and calculate percentages myself, then map them to a fixed-width bar that
+        renders cleanly in any terminal width.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

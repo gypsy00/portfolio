@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Chat — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">Full-Stack Application</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">Live Chat</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A real-time messaging platform with multi-room support, read receipts,
+        typing indicators, and presence tracking — built from the ground up with
+        WebSockets.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://github.com/gypsy00" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.35s">
+      <h3 class="project-section-title">Run It Locally</h3>
+      <div class="arch-block" style="margin-top: 16px; margin-bottom: 16px">
+<span class="hl"># 1. Clone the repo</span>
+git clone https://github.com/gypsy00/live-chat-app.git
+cd live-chat-app
+
+<span class="hl"># 2. Install dependencies</span>
+npm install
+
+<span class="hl"># 3. Set up environment variables</span>
+cp .env.example .env
+<span class="hl"># Add your MongoDB connection string and JWT secret to .env</span>
+
+<span class="hl"># 4. Start the server</span>
+npm start
+
+<span class="hl"># 5. Open two browser tabs to test real-time features</span>
+<span class="hl"># http://localhost:3000</span></div>
+      <p>
+        Requires <strong style="color: var(--text-bright)">Node.js 18+</strong> and
+        a <strong style="color: var(--text-bright)">MongoDB</strong> instance
+        (local or <a href="https://www.mongodb.com/atlas" target="_blank" rel="noopener" style="color: var(--accent)">MongoDB Atlas</a> free tier).
+        Open two browser tabs to see real-time messaging, typing indicators,
+        and read receipts in action.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        I wanted to understand how real-time communication actually works under the hood.
+        Not just sending messages, but everything users expect from a modern chat app —
+        knowing when someone's typing, seeing when your message has been read, and
+        knowing who's online right now.
+      </p>
+      <p>
+        Rather than using a pre-built chat service, I built every layer myself to
+        understand the full architecture: authentication, real-time event handling,
+        presence management, and persistent message storage.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        The app runs on a single Node.js server handling both HTTP requests and
+        WebSocket connections on the same port. Users authenticate via REST endpoints
+        and receive a JWT token, which is then used to authenticate the WebSocket
+        connection. All real-time features flow through Socket.io event handlers
+        organised into separate concerns.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">Client (Vanilla JS)</span>
+  &darr; REST API for auth + room management
+  &darr; WebSocket for real-time events
+<span class="hl">Express Server</span> (single port)
+  ├── <span class="hl">chatHandler</span> &rarr; messages, read receipts
+  ├── <span class="hl">roomHandler</span> &rarr; create, join, switch rooms
+  └── <span class="hl">presenceHandler</span> &rarr; online/offline, typing
+<span class="hl">MongoDB</span>
+  ├── Users (auth credentials)
+  ├── Rooms (members, metadata)
+  └── Messages (content, read receipts)</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Real-Time Messaging</strong>
+            <span>Messages appear instantly for all room members via WebSocket events. No polling, no delays.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Read Receipts</strong>
+            <span>Per-message tracking of who has read what. When a user views a message, all senders in the room are notified in real-time.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Typing Indicators</strong>
+            <span>Live "user is typing..." indicators that fire over WebSockets — no database writes, purely event-driven.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Presence System</strong>
+            <span>Tracks who's online and offline. Multi-tab aware — a user isn't marked offline until all their tabs are closed.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Multi-Room Support</strong>
+            <span>Users can create rooms, join existing ones, and switch between them. Each room maintains its own message history and member list.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Unread Badges & Pagination</strong>
+            <span>Unread message counts with visual badges per room. Message history loads with cursor-based pagination on scroll.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Auto-Reconnection</strong>
+            <span>If the connection drops, the client automatically reconnects and shows a status indicator so users know what's happening.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>Node.js + Express 5</strong>
+          <span>Server runtime and REST framework. Single process handles both HTTP and WebSocket on port 3000.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Socket.io 4</strong>
+          <span>WebSocket abstraction with automatic fallback, room management, and namespace support.</span>
+        </div>
+        <div class="tech-item">
+          <strong>MongoDB + Mongoose 9</strong>
+          <span>Document database for users, rooms, and messages. Schema validation with Mongoose models.</span>
+        </div>
+        <div class="tech-item">
+          <strong>JWT + bcrypt</strong>
+          <span>Token-based auth for both REST and WebSocket layers. Passwords hashed with bcrypt before storage.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Vanilla JavaScript</strong>
+          <span>Zero-dependency frontend served statically. Proves understanding of DOM manipulation without framework abstractions.</span>
+        </div>
+        <div class="tech-item">
+          <strong>HTML / CSS</strong>
+          <span>Custom responsive layout with status indicators, badges, and room switching UI.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        Building this from scratch taught me how bi-directional communication really
+        works — the difference between request-response (REST) and event-driven
+        (WebSocket) patterns, and when to use each. REST handles auth and room CRUD;
+        WebSockets handle everything that needs to be instant.
+      </p>
+      <p>
+        The presence system was the most interesting challenge. A user might have
+        multiple tabs open, so I couldn't just mark them offline when one tab closes.
+        I had to track connections per user and only update presence when the last
+        connection disconnects.
+      </p>
+      <p>
+        I also learned how to organise Socket.io handlers into separate concerns
+        (chat, rooms, presence) rather than dumping everything into one file — a
+        pattern that keeps the codebase maintainable as features grow.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

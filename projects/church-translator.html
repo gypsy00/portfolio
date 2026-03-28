@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Church Translator — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">Web Application</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">Church Translator</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A real-time AI-powered sermon translation app that lets a preacher speak in
+        English while congregation members receive live Ukrainian captions on their
+        phones — no app downloads required.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://translator-tau-nine.vercel.app" target="_blank" rel="noopener" class="link-primary">&nearr; Live Demo</a>
+        <a href="https://github.com/gypsy00/TRANSLATOR" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        In multilingual church services, congregation members who don't speak the
+        preacher's language are left behind. Professional interpreters are expensive,
+        and existing translation tools aren't built for live, continuous speech in a
+        church setting.
+      </p>
+      <p>
+        I needed something that could capture speech in real-time, translate it instantly,
+        and deliver it to multiple phones simultaneously — all through a browser, with
+        no setup required from the audience.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        The app has two roles: a <strong style="color: var(--text-bright)">Broadcaster</strong>
+        (the preacher) and <strong style="color: var(--text-bright)">Listeners</strong>
+        (the congregation). The broadcaster's browser captures English speech using the
+        Web Speech API, sends it to the server for AI translation via Claude, and the
+        translated text is pushed to all connected listeners through Server-Sent Events.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">Preacher's Browser</span>
+  &darr; Web Speech API (captures English)
+<span class="hl">Next.js API Route</span> /api/translate
+  &darr; Claude Haiku (translates to Ukrainian)
+<span class="hl">Broadcast Store</span> (in-memory pub/sub)
+  &darr; Server-Sent Events
+<span class="hl">Listener's Phone</span> (live captions)</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Live Speech Recognition</strong>
+            <span>Uses the browser's Web Speech API to capture continuous English speech with interim results displayed in real-time.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>AI-Powered Translation</strong>
+            <span>Each complete sentence is sent to Claude Haiku for fast, context-aware English-to-Ukrainian translation.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Real-Time Broadcasting</strong>
+            <span>Translations are pushed to all connected listeners simultaneously via SSE, with a 15-second heartbeat to keep connections alive.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>QR Code Joining</strong>
+            <span>The broadcaster displays a dynamic QR code that listeners scan to join — includes the local network IP for LAN use during services.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Progressive Web App</strong>
+            <span>Screen wake lock keeps phones awake during the service. Responsive dark UI optimised for mobile viewing.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Auto-Scrolling Captions</strong>
+            <span>Latest translations stay visible at the top, older captions fade down. No manual scrolling needed.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>Next.js 16</strong>
+          <span>Full-stack framework — App Router for file-based routing, API routes for translation and SSE endpoints.</span>
+        </div>
+        <div class="tech-item">
+          <strong>TypeScript</strong>
+          <span>Type safety across the entire codebase — shared types between client and server.</span>
+        </div>
+        <div class="tech-item">
+          <strong>AI SDK + Claude Haiku</strong>
+          <span>Fast, cost-effective translation model accessed through Vercel's AI SDK for clean provider-agnostic code.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Server-Sent Events</strong>
+          <span>One-way real-time streaming from server to listeners. Lighter than WebSockets for this broadcast-only pattern.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Web Speech API</strong>
+          <span>Browser-native speech recognition — no third-party services needed for capturing the preacher's voice.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Tailwind CSS</strong>
+          <span>Utility-first styling for a responsive, dark-themed mobile interface.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        This project taught me how to combine multiple real-time technologies into a
+        single coherent experience. I learned when to choose SSE over WebSockets (when
+        communication only flows one direction), how to work with AI APIs for real-time
+        use cases where latency matters, and how to design for a specific user context —
+        people holding phones during a church service.
+      </p>
+      <p>
+        I also gained experience deploying to Vercel and managing environment variables
+        for API keys in production. The in-memory broadcast store works for a single
+        server instance, but I've noted in the code where Redis pub/sub would be needed
+        for multi-region scaling.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

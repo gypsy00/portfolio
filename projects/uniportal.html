@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNIPortal — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">Web Platform</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">UNIPortal</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A university course advertising website with a public course browser and
+        a protected admin dashboard — built on a custom MVC framework written
+        from scratch in PHP.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://github.com/gypsy00" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.35s">
+      <h3 class="project-section-title">Run It Locally</h3>
+      <div class="arch-block" style="margin-top: 16px; margin-bottom: 16px">
+<span class="hl"># 1. Clone the repo</span>
+git clone https://github.com/gypsy00/UNIPortal.git
+cd UNIPortal
+
+<span class="hl"># 2. Start the entire stack with Docker</span>
+docker-compose up --build
+
+<span class="hl"># 3. Open in your browser</span>
+<span class="hl"># http://localhost:8080</span>
+
+<span class="hl"># That's it — Docker handles PHP, Nginx, and MariaDB automatically.</span></div>
+      <p>
+        Requires <strong style="color: var(--text-bright)">Docker</strong> and
+        <strong style="color: var(--text-bright)">Docker Compose</strong>.
+        One command spins up the PHP-FPM server, Nginx, and MariaDB database —
+        no manual setup needed. Browse courses publicly or log into the admin
+        dashboard to manage content.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        Universities need a way to showcase their courses to prospective students
+        while giving staff the tools to manage course content, subject areas, and
+        student enquiries — all through a single system.
+      </p>
+      <p>
+        Rather than using an existing CMS or framework like Laravel, I built the
+        entire MVC architecture from scratch. The goal was to deeply understand how
+        web frameworks work internally — routing, autoloading, templating, ORM
+        patterns, and session-based authentication.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        All requests hit a single entry point (<code style="color: var(--accent)">public/index.php</code>)
+        where Nginx routes everything. The custom router maps URLs to controller
+        actions. A generic <code style="color: var(--accent)">DatabaseTable</code> class
+        handles all CRUD operations without writing SQL per feature — you pass it
+        a table name and primary key, and it builds queries dynamically.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">Nginx</span> &rarr; all requests &rarr; <span class="hl">public/index.php</span>
+  &darr;
+<span class="hl">Custom Router</span> (URL &rarr; Controller::action)
+  &darr;
+<span class="hl">Controllers</span>
+  ├── HomeController (public course browsing)
+  ├── CourseController (CRUD, filtering)
+  ├── SubjectAreaController (CRUD)
+  ├── EnquiryController (view, respond)
+  └── AccountController (login, staff management)
+  &darr;
+<span class="hl">DatabaseTable</span> (generic ORM)
+  &darr;
+<span class="hl">MariaDB</span> via PDO prepared statements
+  &darr;
+<span class="hl">Entity Objects</span> &rarr; <span class="hl">Templates</span> (.html.php)</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Public Course Browser</strong>
+            <span>Prospective students can browse courses filtered by subject area, type (full-time/part-time), and duration.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Protected Admin Dashboard</strong>
+            <span>Staff log in with session-based auth (bcrypt hashed passwords) to manage all content through a clean admin interface.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Subject Area Management</strong>
+            <span>Full CRUD for subject areas that categorise courses. Courses are linked to subject areas via foreign keys.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Course Management</strong>
+            <span>Add and edit courses with title, description, length, type, modules, and part-time availability.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Enquiry System</strong>
+            <span>Students submit enquiries through the public site. Staff can view and respond to them from the dashboard.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Staff Account Management</strong>
+            <span>Superadmin can add and delete staff accounts. Passwords are hashed before storage.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Pagination</strong>
+            <span>All list views paginate at 10 records using SQL LIMIT/OFFSET — no loading entire tables into memory.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>PHP 8 (Custom MVC)</strong>
+          <span>No framework — custom router, autoloader, controllers, entity objects, and template engine built from scratch.</span>
+        </div>
+        <div class="tech-item">
+          <strong>MariaDB / MySQL</strong>
+          <span>Relational database with foreign key constraints. All queries use PDO prepared statements to prevent SQL injection.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Docker + Docker Compose</strong>
+          <span>Containerised setup with separate PHP-FPM and Nginx containers. One command to spin up the entire stack.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Nginx</strong>
+          <span>Web server configured to route all requests through a single PHP entry point for clean URLs.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Custom Autoloader</strong>
+          <span>PSR-4 style autoloading with two namespaces: Csy2089 (reusable framework) and Nmp (project-specific code).</span>
+        </div>
+        <div class="tech-item">
+          <strong>HTML / CSS</strong>
+          <span>Server-rendered templates with zero JavaScript dependencies. Clean separation — no database logic in views.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        Building an MVC framework from scratch gave me a deep understanding of what
+        frameworks like Laravel and Express do under the hood. I had to solve routing,
+        autoloading, database abstraction, session management, and template rendering
+        myself — problems that are usually invisible when using a framework.
+      </p>
+      <p>
+        The generic <code style="color: var(--accent)">DatabaseTable</code> class was the
+        most valuable abstraction. Instead of writing separate SQL for each feature,
+        I built one class that handles INSERT, UPDATE, DELETE, and SELECT for any table.
+        This taught me how ORMs work at a fundamental level.
+      </p>
+      <p>
+        Containerising with Docker also taught me about environment consistency — the
+        same setup runs identically on any machine, which eliminated "works on my
+        machine" problems during development.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

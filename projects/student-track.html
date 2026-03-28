@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Track — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">Desktop Application</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">Student Track</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A JavaFX desktop application for managing student course registrations,
+        enrollments, and academic results — with business rule enforcement
+        for credit limits, schedule clashes, and grade reporting.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://mymedia.northampton.ac.uk/media/CSY+2094+SYSTEM+DESIGN+AND+DEVELOPMENT+VIDEO+DEMONSTRATION/0_mpo5vlrc" target="_blank" rel="noopener" class="link-primary">&nearr; Watch Demo</a>
+        <a href="https://github.com/gypsy00" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        Academic institutions need systems that don't just store data but actively
+        enforce rules. A student shouldn't be able to enrol in more credits than
+        allowed. Two courses that clash in schedule shouldn't both be registerable.
+        Grades shouldn't be recorded for students who aren't enrolled.
+      </p>
+      <p>
+        This project handles the complete lifecycle of academic administration —
+        from student and course creation through enrollment with validation, to
+        grade recording and summary reporting.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        The application follows a layered MVC architecture. JavaFX FXML files define
+        the UI layout, controllers handle user interaction, a central business logic
+        engine enforces all rules, and a storage layer persists data to CSV files.
+        A <code style="color: var(--accent)">Searchable</code> interface provides
+        real-time filtering across all views.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">JavaFX UI</span> (FXML + Controllers)
+  ├── StudentView &rarr; add, update, delete, search
+  ├── CourseView &rarr; manage courses with schedules
+  ├── EnrollmentView &rarr; enrol with validation
+  ├── ResultsView &rarr; record grades
+  └── ReportsView &rarr; summaries and statistics
+  &darr;
+<span class="hl">Business Logic Engine</span>
+  ├── Credit limit check (max 70 credits)
+  ├── Schedule clash detection
+  ├── Duplicate enrollment prevention
+  └── Enrollment verification for grades
+  &darr;
+<span class="hl">Storage Layer</span> (CSV files)
+  ├── students.txt
+  ├── courses.txt
+  ├── enrollments.txt
+  └── results.txt</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Student Management</strong>
+            <span>Add, update, delete, and search students with email validation and duplicate student ID prevention.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Course Management</strong>
+            <span>Full CRUD for courses including credit value, day, time, and room — all validated on input.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Smart Enrollment</strong>
+            <span>Enforces a maximum of 70 credits per student, detects overlapping schedules on the same day, and prevents duplicate enrollments.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Grade Recording</strong>
+            <span>Grades on a 0–100 scale with a 40% pass mark. The system verifies a student is enrolled before allowing grade entry.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Reporting</strong>
+            <span>Student summaries showing enrolled courses, pass/fail counts, and average grades. Course-level statistics for staff.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Real-Time Search</strong>
+            <span>All table views support live filtering via a shared Searchable interface — type and results update instantly.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>Java 17</strong>
+          <span>Core language. Object-oriented design with clean separation between domain models, logic, and UI.</span>
+        </div>
+        <div class="tech-item">
+          <strong>JavaFX 17</strong>
+          <span>Desktop UI framework with FXML for declarative layouts and CSS-like styling for the interface.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Maven</strong>
+          <span>Build system handling dependency management, compilation, and test execution.</span>
+        </div>
+        <div class="tech-item">
+          <strong>JUnit 5</strong>
+          <span>Unit testing for business logic — credit limit checks, schedule clash detection, and enrollment rules.</span>
+        </div>
+        <div class="tech-item">
+          <strong>FXML</strong>
+          <span>XML-based UI layout files that separate view structure from controller logic.</span>
+        </div>
+        <div class="tech-item">
+          <strong>CSV Storage</strong>
+          <span>Lightweight text-based persistence. Each entity type has its own file with structured read/write operations.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        This project was all about business rule enforcement. The most interesting
+        challenge was the schedule clash detection — I had to compare time ranges
+        across all of a student's enrolled courses on the same day, accounting for
+        overlapping periods rather than just exact matches.
+      </p>
+      <p>
+        Working with JavaFX taught me about event-driven programming in a desktop
+        context — binding UI elements to data, handling user actions through
+        controllers, and keeping the view layer completely separate from business
+        logic. The <code style="color: var(--accent)">Searchable</code> interface
+        pattern let me add real-time filtering to every view without duplicating code.
+      </p>
+      <p>
+        Writing JUnit tests for the business rules also reinforced the value of
+        testing — I caught edge cases in the credit calculation and schedule overlap
+        logic that I wouldn't have found through manual testing alone.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

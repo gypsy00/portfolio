@@ -1,0 +1,255 @@
+/* ── Project Page Styles (extends style.css) ── */
+
+.project-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Back Link ── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-family: var(--mono);
+  color: var(--accent);
+  padding: 80px 0 48px;
+  transition: transform 0.4s ease;
+}
+
+.back-link:hover {
+  transform: translateX(-6px);
+}
+
+.back-arrow {
+  font-size: 1.125rem;
+  transition: transform 0.4s ease;
+}
+
+.back-link:hover .back-arrow {
+  transform: translateX(-4px);
+}
+
+/* ── Project Header ── */
+.project-page-header {
+  margin-bottom: 56px;
+}
+
+.project-page-type {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--mono);
+  margin-bottom: 16px;
+}
+
+.project-page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.project-page-summary {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.project-page-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.project-page-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--mono);
+  border-radius: 6px;
+  transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.link-primary {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.link-primary:hover {
+  background: var(--accent-muted);
+  transform: translateY(-2px);
+}
+
+.link-secondary {
+  color: var(--text-muted);
+  border: 1px solid rgba(136, 146, 176, 0.3);
+}
+
+.link-secondary:hover {
+  color: var(--text-bright);
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+/* ── Content Sections ── */
+.project-section {
+  margin-bottom: 56px;
+}
+
+.project-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-bright);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(136, 146, 176, 0.15);
+}
+
+.project-section p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.project-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Feature List ── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.feature-bullet {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.feature-item div {
+  flex: 1;
+}
+
+.feature-item strong {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--text-bright);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.feature-item span {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── Tech Stack Grid ── */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.tech-item {
+  padding: 16px 20px;
+  background: var(--bg-light);
+  border: 1px solid rgba(136, 146, 176, 0.1);
+  border-radius: 8px;
+  transition: border-color 0.4s ease;
+}
+
+.tech-item:hover {
+  border-color: rgba(100, 255, 218, 0.2);
+}
+
+.tech-item strong {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-bright);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tech-item span {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Architecture ── */
+.arch-block {
+  background: var(--bg-light);
+  border: 1px solid rgba(136, 146, 176, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  white-space: pre-line;
+  overflow-x: auto;
+}
+
+.arch-block .hl {
+  color: var(--accent);
+}
+
+/* ── Footer ── */
+.project-footer {
+  padding: 40px 0 80px;
+  border-top: 1px solid rgba(136, 146, 176, 0.1);
+  margin-top: 20px;
+}
+
+.project-footer p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .project-page-title {
+    font-size: 1.75rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page-links {
+    flex-direction: column;
+  }
+}

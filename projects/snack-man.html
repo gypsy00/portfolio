@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snack Man! — Chisom Valentine</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="project-page">
+
+    <a href="../index.html" class="back-link fade-in" style="--delay: 0.1s">
+      <span class="back-arrow">&larr;</span> Back to portfolio
+    </a>
+
+    <header class="project-page-header">
+      <p class="project-page-type fade-in" style="--delay: 0.2s">Browser Game</p>
+      <h1 class="project-page-title fade-in" style="--delay: 0.3s">Snack Man!</h1>
+      <p class="project-page-summary fade-in" style="--delay: 0.5s">
+        A Pac-Man inspired browser game with grid-based maze navigation,
+        AI-controlled enemies, a scoring system, lives, and a persistent
+        leaderboard — built entirely with vanilla JavaScript.
+      </p>
+      <div class="project-page-links fade-in" style="--delay: 0.6s">
+        <a href="https://gypsy00.github.io/SNACK-MAN/" target="_blank" rel="noopener" class="link-primary">&nearr; Play Game</a>
+        <a href="https://github.com/gypsy00/SNACK-MAN" target="_blank" rel="noopener" class="link-secondary">&lt;/&gt; Source Code</a>
+      </div>
+    </header>
+
+    <section class="project-section fade-in" style="--delay: 0.4s">
+      <h3 class="project-section-title">The Problem</h3>
+      <p>
+        I wanted to understand how games work at a fundamental level — game loops,
+        collision detection, enemy AI, and state management — without relying on a
+        game engine. The goal was to build something playable and fun using only
+        what the browser gives you: HTML, CSS, and JavaScript.
+      </p>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">How It Works</h3>
+      <p>
+        The game runs on a 10x10 CSS Grid where each cell is either a wall, a path
+        with a dot, or empty. The player moves through the grid collecting dots while
+        avoiding three enemies that move randomly. The game loop runs on a timed
+        interval, updating enemy positions and checking for collisions each tick.
+      </p>
+      <div class="arch-block" style="margin-top: 20px">
+<span class="hl">Game Loop</span> (setInterval)
+  &darr; each tick
+  ├── <span class="hl">Input Handler</span>
+  │   ├── Arrow keys (keyboard)
+  │   └── On-screen buttons (touch/mobile)
+  ├── <span class="hl">Player Update</span>
+  │   ├── Move in current direction
+  │   ├── Check wall collision
+  │   └── Collect dot (+10 points)
+  ├── <span class="hl">Enemy Update</span> (x3)
+  │   ├── Random direction selection
+  │   └── Wall-aware movement
+  ├── <span class="hl">Collision Check</span>
+  │   ├── Player vs Enemy &rarr; lose life
+  │   └── All dots collected &rarr; win
+  └── <span class="hl">Render</span>
+      ├── Update grid cells
+      ├── Update score / lives display
+      └── Animate player mouth direction</div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Key Features</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Grid-Based Gameplay</strong>
+            <span>10x10 maze built with CSS Grid. Walls, paths, and dots are all defined in a map array that's easy to modify.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Enemy AI</strong>
+            <span>Three AI-controlled enemies that navigate the maze using random direction selection with wall awareness — they can't walk through walls.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Scoring System</strong>
+            <span>+10 points per dot collected. Total score displayed in real-time. Win condition: collect all dots on the grid.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Lives System</strong>
+            <span>3 lives with visual indicators. Lose a life when an enemy catches you. Game over at 0 lives.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Persistent Leaderboard</strong>
+            <span>High scores saved to localStorage and displayed in a sidebar. Scores persist across browser sessions.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Mobile Controls</strong>
+            <span>On-screen directional buttons for touch devices alongside keyboard arrow key support for desktop.</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-bullet"></span>
+          <div>
+            <strong>Directional Animation</strong>
+            <span>The player character's mouth animates to face the current movement direction using CSS clip-path.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">Tech Stack</h3>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <strong>Vanilla JavaScript</strong>
+          <span>Zero dependencies. Game loop, state management, collision detection, and enemy AI all written from scratch.</span>
+        </div>
+        <div class="tech-item">
+          <strong>CSS Grid</strong>
+          <span>The entire game board is a CSS Grid. Each cell's visual state is controlled by adding/removing CSS classes.</span>
+        </div>
+        <div class="tech-item">
+          <strong>CSS Animations</strong>
+          <span>Player mouth animation uses clip-path transforms. Smooth transitions for movement and visual feedback.</span>
+        </div>
+        <div class="tech-item">
+          <strong>localStorage</strong>
+          <span>Persistent leaderboard storage. Scores are serialised to JSON and survive browser restarts.</span>
+        </div>
+        <div class="tech-item">
+          <strong>HTML5</strong>
+          <span>Semantic structure with a sidebar for leaderboard, centred game board, and control panels.</span>
+        </div>
+        <div class="tech-item">
+          <strong>Google Fonts</strong>
+          <span>Press Start 2P retro font for the authentic arcade game aesthetic.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section fade-in" style="--delay: 0.3s">
+      <h3 class="project-section-title">What I Learned</h3>
+      <p>
+        Building a game without a framework taught me how game loops actually work —
+        the cycle of reading input, updating state, checking collisions, and rendering,
+        all running on a fixed interval. It's a pattern that translates well to
+        understanding any real-time system.
+      </p>
+      <p>
+        The collision detection was simpler than I expected because the grid-based
+        approach means you only need to check if two entities occupy the same cell,
+        rather than calculating pixel-perfect overlaps. This taught me that choosing
+        the right data structure (a grid vs. free-form coordinates) can dramatically
+        simplify your logic.
+      </p>
+      <p>
+        I also learned about the importance of input responsiveness — the game feels
+        much better when directional changes are queued and applied on the next tick
+        rather than processed immediately, which prevents the player from moving
+        through walls by pressing keys too fast.
+      </p>
+    </section>
+
+    <footer class="project-footer fade-in" style="--delay: 0.3s">
+      <p>&copy; 2026 Chisom Valentine</p>
+    </footer>
+
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>
