@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chisom Valentine — CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 10.5pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+
+    @media print {
+      .page { padding: 24px 36px; }
+      body { font-size: 10pt; }
+      .no-print { display: none; }
+    }
+
+    @page {
+      margin: 0.5in;
+      @top-left { content: none; }
+      @top-right { content: none; }
+      @bottom-left { content: none; }
+      @bottom-right { content: none; }
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .header-left .subtitle {
+      font-size: 11pt;
+      color: #555;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 9.5pt;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .header-right a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .header-right a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ── Profile ── */
+    .profile p {
+      color: #333;
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 6px 16px;
+    }
+
+    .skills-grid dt {
+      font-weight: 600;
+      font-size: 10pt;
+      color: #1a1a1a;
+    }
+
+    .skills-grid dd {
+      font-size: 10pt;
+      color: #444;
+    }
+
+    /* ── Projects ── */
+    .project {
+      margin-bottom: 14px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .project-name {
+      font-weight: 600;
+      font-size: 10.5pt;
+    }
+
+    .project-tech {
+      font-size: 9pt;
+      color: #777;
+      font-style: italic;
+    }
+
+    .project-desc {
+      color: #444;
+      font-size: 10pt;
+      margin-top: 2px;
+    }
+
+    .project-points {
+      margin-top: 4px;
+      padding-left: 16px;
+    }
+
+    .project-points li {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 2px;
+    }
+
+    /* ── Experience ── */
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 10.5pt;
+    }
+
+    .exp-date {
+      font-size: 9.5pt;
+      color: #777;
+    }
+
+    .exp-company {
+      font-size: 10pt;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .exp-points {
+      padding-left: 16px;
+    }
+
+    .exp-points li {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 2px;
+    }
+
+    /* ── Education ── */
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+      font-size: 10.5pt;
+    }
+
+    .edu-date {
+      font-size: 9.5pt;
+      color: #777;
+    }
+
+    .edu-school {
+      font-size: 10pt;
+      color: #555;
+    }
+
+    .edu-details {
+      font-size: 10pt;
+      color: #444;
+      margin-top: 2px;
+    }
+
+    /* ── Print Button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10pt;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .print-btn:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Chisom Valentine</h1>
+        <p class="subtitle">Full-Stack Developer</p>
+      </div>
+      <div class="header-right">
+        07985728025<br>
+        valkvng@gmail.com<br>
+        <a href="https://github.com/gypsy00">github.com/gypsy00</a><br>
+        <a href="https://www.linkedin.com/in/valentine-chisom-756523355">linkedin.com/in/valentine-chisom</a><br>
+        <a href="https://gypsy00.github.io/portfolio">gypsy00.github.io/portfolio</a><br>
+        Northampton, UK
+      </div>
+    </header>
+
+    <!-- Profile -->
+    <section class="section profile">
+      <h2 class="section-title">Profile</h2>
+      <p>
+        Full-stack developer and Computer Science student with hands-on experience building
+        real-time applications, AI integrations, and custom backend frameworks. Comfortable
+        working across multiple languages and paradigms, with a focus on clean architecture
+        and maintainable code. Seeking a placement opportunity to contribute to real-world
+        systems and grow as a developer.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <dl class="skills-grid">
+        <dt>Languages</dt>
+        <dd>JavaScript, TypeScript, Java, PHP, HTML, CSS</dd>
+        <dt>Frontend</dt>
+        <dd>React, Next.js (App Router), JavaFX, Tailwind CSS</dd>
+        <dt>Backend</dt>
+        <dd>Node.js, Express, REST APIs, Server-Sent Events, WebSockets (Socket.io)</dd>
+        <dt>Databases</dt>
+        <dd>MongoDB, MySQL / MariaDB, Mongoose, PDO</dd>
+        <dt>AI / APIs</dt>
+        <dd>AI SDK, Claude API, Web Speech API, GitHub REST API</dd>
+        <dt>DevOps</dt>
+        <dd>Git, Docker, Docker Compose, Vercel, Maven, npm</dd>
+        <dt>Testing</dt>
+        <dd>JUnit 5</dd>
+        <dt>Concepts</dt>
+        <dd>MVC Architecture, JWT Authentication, Pub/Sub, CI/CD, Responsive Design</dd>
+      </dl>
+    </section>
+
+    <!-- Projects -->
+    <section class="section">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Church Translator — <a href="https://translator-tau-nine.vercel.app" style="color:#555; font-weight:400; font-size:9pt;">translator-tau-nine.vercel.app</a></span>
+          <span class="project-tech">Next.js, TypeScript, AI SDK, Claude API, SSE</span>
+        </div>
+        <ul class="project-points">
+          <li>Built a real-time AI translation app that streams live Ukrainian captions to congregation members' phones as the preacher speaks English</li>
+          <li>Integrated Web Speech API for speech capture, Claude Haiku for translation, and Server-Sent Events for broadcasting to multiple clients</li>
+          <li>Deployed to Vercel with QR code-based joining for zero-setup audience access</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Live Chat</span>
+          <span class="project-tech">Node.js, Express, Socket.io, MongoDB, JWT</span>
+        </div>
+        <ul class="project-points">
+          <li>Developed a real-time messaging platform with multi-room support, read receipts, typing indicators, and online/offline presence tracking</li>
+          <li>Implemented multi-tab-aware presence system that only marks users offline when all connections close</li>
+          <li>Designed JWT-based authentication for both REST endpoints and WebSocket handshake</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">UNIPortal</span>
+          <span class="project-tech">PHP, MySQL, Docker, Nginx, Custom MVC</span>
+        </div>
+        <ul class="project-points">
+          <li>Built a university course portal with public course browsing and a protected admin dashboard on a custom MVC framework written from scratch</li>
+          <li>Created a generic DatabaseTable ORM class that handles CRUD for any table without writing SQL per feature</li>
+          <li>Containerised the full stack (PHP-FPM, Nginx, MariaDB) with Docker Compose for one-command setup</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Student Track</span>
+          <span class="project-tech">Java, JavaFX, Maven, JUnit 5</span>
+        </div>
+        <ul class="project-points">
+          <li>Developed a desktop academic management system handling enrollment, scheduling, and grade reporting with business rule enforcement</li>
+          <li>Implemented schedule clash detection, 70-credit enrollment limits, and duplicate prevention with full JUnit test coverage</li>
+          <li>Built real-time search across all views using a shared Searchable interface pattern</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">GitHub Profile Analyzer — <a href="https://www.npmjs.com/package/gh-profile-peek" style="color:#555; font-weight:400; font-size:9pt;">npmjs.com/package/gh-profile-peek</a></span>
+          <span class="project-tech">Node.js, Commander, Chalk, GitHub API</span>
+        </div>
+        <ul class="project-points">
+          <li>Published an npm CLI tool that analyses any GitHub user's language breakdown, top repos, and activity</li>
+          <li>Aggregates language byte counts across 30+ repos and renders colour-coded terminal visualisations</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-name">Snack Man! — <a href="https://gypsy00.github.io/SNACK-MAN/" style="color:#555; font-weight:400; font-size:9pt;">gypsy00.github.io/SNACK-MAN</a></span>
+          <span class="project-tech">JavaScript, HTML5, CSS Grid</span>
+        </div>
+        <ul class="project-points">
+          <li>Built a Pac-Man inspired browser game with grid-based maze navigation, AI enemies, scoring, and a persistent leaderboard using zero dependencies</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-header">
+        <span class="exp-role">Warehouse MHE Operative</span>
+        <span class="exp-date">Sept 2024 — Present</span>
+      </div>
+      <p class="exp-company">Yusen Logistics, Northampton</p>
+      <ul class="exp-points">
+        <li>Managed inventory processing, order fulfilment, and stock organisation in a fast-paced distribution environment</li>
+        <li>Developed strong time management and attention to detail while meeting daily throughput targets</li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-header">
+        <span class="edu-degree">BSc (Hons) Computer Science</span>
+        <span class="edu-date">Sept 2023 — July 2027 (expected)</span>
+      </div>
+      <p class="edu-school">University of Northampton</p>
+      <p class="edu-details">
+        Relevant modules: System Design and Development, Web Development, Object-Oriented Programming, Database Systems
+      </p>
+    </section>
+
+    <!-- References -->
+    <section class="section">
+      <h2 class="section-title">References</h2>
+      <p style="font-size: 10pt; color: #444;">Available on request.</p>
+    </section>
+
+  </div>
+
+  <button class="print-btn no-print" onclick="window.print()">Save as PDF</button>
+</body>
+</html>
