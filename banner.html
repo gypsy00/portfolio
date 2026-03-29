@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Banner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #333;
+    }
+
+    .banner {
+      width: 1584px;
+      height: 396px;
+      background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid pattern */
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Glow accent */
+    .banner::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: 200px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .name {
+      font-family: 'Inter', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #e6f1ff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .name span {
+      color: #64ffda;
+    }
+
+    .title {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #8892b0;
+      margin-top: 8px;
+    }
+
+    .right {
+      position: relative;
+      z-index: 1;
+      text-align: right;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      max-width: 480px;
+    }
+
+    .tech-stack span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #64ffda;
+      background: rgba(100, 255, 218, 0.08);
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(100, 255, 218, 0.15);
+    }
+
+    .portfolio-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      color: #64ffda;
+      margin-top: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .seeking {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #8892b0;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="left">
+      <h1 class="name">Chisom Valentine<span>.</span></h1>
+      <p class="title">Full-Stack Developer</p>
+    </div>
+    <div class="right">
+      <div class="tech-stack">
+        <span>React</span>
+        <span>Next.js</span>
+        <span>Node.js</span>
+        <span>TypeScript</span>
+        <span>Java</span>
+        <span>PHP</span>
+        <span>MongoDB</span>
+        <span>Docker</span>
+        <span>Socket.io</span>
+        <span>AI SDK</span>
+      </div>
+      <p class="portfolio-url">gypsy00.github.io/portfolio</p>
+      <p class="seeking">Open to Placement Opportunities</p>
+    </div>
+  </div>
+</body>
+</html>
