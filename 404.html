@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chisom Valentine — Back Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a192f;
+      --text: #ccd6f6;
+      --text-muted: #8892b0;
+      --text-bright: #e6f1ff;
+      --accent: #64ffda;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    main { max-width: 560px; }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 7vw, 3rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    p { color: var(--text-muted); margin-bottom: 32px; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .links a {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 10px 18px;
+      transition: background 0.25s ease;
+    }
+
+    .links a:hover { background: rgba(100, 255, 218, 0.1); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="label">// under construction</div>
+    <h1>Chisom Valentine</h1>
+    <p>
+      I'm rebuilding my portfolio and it'll be back shortly.
+      In the meantime, feel free to reach out.
+    </p>
+    <div class="links">
+      <a href="mailto:valkvng@gmail.com">Email</a>
+      <a href="https://github.com/gypsy00" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/chisomvalentine" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </main>
+</body>
+</html>
